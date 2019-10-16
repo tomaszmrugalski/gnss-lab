@@ -38,6 +38,12 @@
             android:layout_height="wrap_content"
             android:text="Down" />
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fibonacci number (n)" />
+
         <EditText
             android:id="@+id/i_value"
             android:layout_width="286dp"
@@ -46,13 +52,34 @@
             android:inputType="textPersonName"
             android:text="5" />
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fibonacci value F(n)" />
+
         <EditText
             android:id="@+id/fib"
             android:layout_width="285dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:text="Fibonacci value" />
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="1000"
+            android:progress="500" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="progressbarvalue" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

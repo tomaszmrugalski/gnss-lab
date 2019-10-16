@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.app.Activity;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 
@@ -40,14 +41,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                TextView t = findViewById(R.id.i_value);
 
-                Integer x = Integer.parseInt(t.getText().toString());
-                x +=1;
-                t.setText(Integer.toString(x));
+                setN(getN() + 1);
 
-                TextView f = findViewById(R.id.fib);
-                f.setText(fib(x).toString());
+                calc();
             }
         });
 
@@ -57,25 +54,39 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                TextView t = findViewById(R.id.i_value);
 
-                Integer x = Integer.parseInt(t.getText().toString());
-                x -=1;
-                t.setText(Integer.toString(x));
+                setN(getN() - 1);
 
-                TextView f = findViewById(R.id.fib);
-                f.setText(fib(x).toString());
+                calc();
             }
         });
     }
 
-    // Fibonacci sequence implementation
-    public Integer fib(Integer i) {
-        if (i < 1)
-            return 0;
-        if (i == 1)
-            return 1;
-        return fib(i - 2) + fib(i -1);
+    private Integer getN() {
+        TextView t = findViewById(R.id.i_value);
+
+        return Integer.parseInt(t.getText().toString());
+    }
+
+    private void setN(Integer n) {
+        TextView t = findViewById(R.id.i_value);
+        t.setText(Integer.toString(n));
+    }
+
+
+    public boolean calc() {
+
+        Integer n = Integer.parseInt(((TextView)findViewById(R.id.i_value)).getText().toString());
+
+        FibAsyncTaskRunner fib = new FibAsyncTaskRunner();
+        fib.debug = findViewById(R.id.textView3);
+        fib.pb = findViewById(R.id.progressBar2);
+        fib.result = findViewById(R.id.fib);
+
+        fib.debug.append("Calling execute(n)");
+        fib.execute(n);
+
+        return true;
     }
 
     @Override
