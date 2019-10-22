@@ -74,11 +74,16 @@
             android:max="1000"
             android:progress="500" />
 
-        <TextView
-            android:id="@+id/textView3"
+        <EditText
+            android:id="@+id/debug"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="progressbarvalue" />
+            android:layout_height="288dp"
+            android:autoText="false"
+            android:clickable="false"
+            android:editable="false"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="none" />
 
     </LinearLayout>
 

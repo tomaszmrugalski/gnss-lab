@@ -79,11 +79,11 @@ public class MainActivity extends AppCompatActivity {
         Integer n = Integer.parseInt(((TextView)findViewById(R.id.i_value)).getText().toString());
 
         FibAsyncTaskRunner fib = new FibAsyncTaskRunner();
-        fib.debug = findViewById(R.id.textView3);
+        fib.debug = findViewById(R.id.debug);
         fib.pb = findViewById(R.id.progressBar2);
         fib.result = findViewById(R.id.fib);
 
-        fib.debug.append("Calling execute(n)");
+        fib.debug.setText("Calling execute(n)");
         fib.execute(n);
 
         return true;

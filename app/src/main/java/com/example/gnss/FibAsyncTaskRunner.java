@@ -25,7 +25,7 @@ class FibAsyncTaskRunner extends AsyncTask<Integer, Integer, Integer> {
             max = n[0];
 
             // Call the actual Fibonacci calculation.
-            resp = fib(n[0]);
+            resp = fib(n[0], true);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -61,19 +61,21 @@ class FibAsyncTaskRunner extends AsyncTask<Integer, Integer, Integer> {
     }
 
     // Fibonacci sequence implementation
-    public Integer fib(Integer i) {
+    public Integer fib(Integer i, boolean update) {
         if (i < 1)
             return 0;
         if (i == 1)
             return 1;
 
 
-        Integer val = fib(i - 2) + fib(i -1);
+        Integer val = fib(i - 2, update) + fib(i -1, false);
 
-        Integer pb_val = i*1000/max;
-        debug.setText(pb_val.toString() + " ");
+        if (update) {
+            Integer pb_val = i * 1000 / max;
+            // debug.append(pb_val.toString() + " ");
 
-        pb.setProgress(pb_val);
+            pb.setProgress(pb_val);
+        }
         return val;
     }
 
