@@ -1,6 +1,5 @@
 # gnss
-An Android app for GNSS (GPS &amp; other navigation systems)
-
+A basic Android app for calculating Fibonacci sequence.
 
 For now it's just a simple demo. It calculates Fibonacci sequence for specified value.
 
