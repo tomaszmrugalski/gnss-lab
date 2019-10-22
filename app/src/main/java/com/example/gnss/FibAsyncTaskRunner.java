@@ -22,7 +22,21 @@ class FibAsyncTaskRunner extends AsyncTask<Integer, Integer, Integer> {
 
             // Remember the maximum iterations value.
             // This will be used by the fibonacci calculation code to determine progress.
-            max = n[0];
+            Double A = 0.2088906673;
+            Double B = 0.070613648;
+            Double offset = 0.42;
+            Double est_fn = 100.0;
+            if (n[0]>5) {
+                est_fn = java.lang.Math.pow(10, A * n[0] + B - offset);
+                max = est_fn.intValue();
+                try {
+                    debug.setText("Calculating n=" + n[0] + ", est. F(n)=" + est_fn + ", int(est_fn)=" + max + "\n");
+                } catch (java.lang.Exception e) {
+
+                }
+            } else {
+                max = n[0];
+            }
 
             // Call the actual Fibonacci calculation.
             resp = fib(n[0], true);
@@ -39,15 +53,14 @@ class FibAsyncTaskRunner extends AsyncTask<Integer, Integer, Integer> {
     @Override
     protected void onPostExecute(Integer n) {
         // execution of result of Long time consuming operation
-        debug.append("onPostExecute() called. We're done!\n");
+        debug.append("We're done!\n");
         result.setText(n.toString());
     }
 
 
     @Override
     protected void onPreExecute() {
-
-        debug.append("onPreExecute called: Let's start\n");
+        debug.setText("");
     }
 
 
@@ -71,8 +84,8 @@ class FibAsyncTaskRunner extends AsyncTask<Integer, Integer, Integer> {
         Integer val = fib(i - 2, update) + fib(i -1, false);
 
         if (update) {
-            Integer pb_val = i * 1000 / max;
-            // debug.append(pb_val.toString() + " ");
+            Double tmp = val*1000.0 / max;
+            Integer pb_val = tmp.intValue();
 
             pb.setProgress(pb_val);
         }
