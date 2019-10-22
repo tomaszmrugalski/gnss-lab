@@ -55,9 +55,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                setN(getN() - 1);
+                if (getN()>1) {
 
-                calc();
+                    setN(getN() - 1);
+
+                    calc();
+                }
             }
         });
     }
@@ -83,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         fib.pb = findViewById(R.id.progressBar2);
         fib.result = findViewById(R.id.fib);
 
-        fib.debug.setText("Calling execute(n)");
+        // Run the actual fibonacci calculation
         fib.execute(n);
 
         return true;
